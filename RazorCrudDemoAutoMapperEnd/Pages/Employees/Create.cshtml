@@ -1,0 +1,59 @@
+﻿@page
+@model RazorCrudDemo_FACIT.Pages.Employees.CreateModel
+@{
+    //Om ViewData är INTE null konverta till en sträng
+    var successMessage = ViewData["Message"]?.ToString();
+}
+
+<h1>CREATE a new Employee</h1>
+
+@if (!string.IsNullOrWhiteSpace(successMessage))
+{
+    <div class="alert alert-success" role="alert">
+        @successMessage
+    </div>
+}
+
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" asp-for="CreateEmployeeRequest.Name" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control" asp-for="CreateEmployeeRequest.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Salary</label>
+        <input type="number" class="form-control" asp-for="CreateEmployeeRequest.Salary" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Date of Birth</label>
+        <input type="date" class="form-control" asp-for="CreateEmployeeRequest.DateOfBirth" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Department</label>
+        <input type="text" class="form-control" asp-for="CreateEmployeeRequest.Department" />
+    </div>
+
+    @*Övning 4*@
+    <div class="mb-3 d-flex justify-content-left">
+        <button type="submit"
+                class="btn btn-primary"
+                style="width:120px">
+            Save
+        </button>
+
+        <a asp-page="Read"
+           class="btn btn-secondary mx-1"
+           style="width:120px">
+            Back to List
+        </a>
+    </div>
+</form>
+
