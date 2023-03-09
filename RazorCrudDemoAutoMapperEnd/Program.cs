@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RazorCrudDemo_FACIT.Data;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 // Lägg till min DataInitializer med Dependency Injection
 builder.Services.AddTransient<DataInitializer>();
 
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 var app = builder.Build();
 
 // Kör min SeedData() metod
